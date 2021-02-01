@@ -1,5 +1,6 @@
 import Main from '@p/Main'
-import { withRouter, Redirect } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
+
 const App = () => {
   return (
     <div className="App">

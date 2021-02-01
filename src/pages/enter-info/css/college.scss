@@ -1,0 +1,81 @@
+#College {
+    .college-header {
+        width: 60%;
+        height: 200px;
+        padding: 30px 50px;
+        display: flex;
+        justify-content: space-between;
+        margin: 0 auto;
+    }
+
+    .header-text {
+        margin: 10px 20px;
+    }
+
+    .text-name {
+        font-size: 30px;
+        font-weight: 600;
+        margin: 10px 0;
+    }
+
+    .text-englishname {
+        font-size: 18px;
+    }
+
+    .text-website {
+        margin: 10px 0;
+        font-weight: 600;
+    }
+
+    .header-img {
+        img {
+            width: 180px;
+            height: 180px;
+        }
+    }
+
+    .college-body {
+        width: 60%;
+        margin: 60px auto;
+        padding: 20px;
+    }
+
+    .body-list {
+        margin: 50px 0;
+    }
+
+    .list-content {
+        padding: 30px 50px;
+        border-radius: 5%;
+        background-color: #FAFAFA;
+    }
+
+    .ins-title,
+    .list-title {
+        font-size: 20px;
+        font-weight: 600;
+        margin: 30px 50px;
+    }
+
+    .ins-card {
+        padding: 30px 50px;
+        background-color: #FAFAFA;
+        border-radius: 5%;
+        font-size: 16px;
+    }
+
+    .card-title {
+        text-align: center;
+        font-size: 18px;
+    }
+
+    .card-content {
+        padding: 10px 0;
+    }
+
+    .card-item {
+        display: flex;
+        justify-content: space-between;
+        padding: 5px 0;
+    }
+}

@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { FC }  from 'react'
 
-const EnterTeacher = () => {
+const EnterTeacher:FC = () => {
     return (
         <div id="EnterTeacher">
             <div className="teacher-header">

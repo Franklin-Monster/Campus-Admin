@@ -6,82 +6,52 @@ import {
     Form,
     Input,
     Tooltip,
-    Cascader,
     Select,
-    Row,
-    Col,
     Checkbox,
     Button,
+    Upload,
     AutoComplete,
+    message
 } from 'antd';
-import { QuestionCircleOutlined } from '@ant-design/icons';
+import { QuestionCircleOutlined, InboxOutlined, CheckCircleTwoTone } from '@ant-design/icons';
 
-const { Option } = Select;
+const EnterCollege: FC = () => {
+    const [autoCompleteResult, setAutoCompleteResult] = useState<string[]>([]);
+    const [isSubmit, setIsSubmit] = useState<boolean>(false);
 
-const residences = [
-    {
-        value: 'zhejiang',
-        label: 'Zhejiang',
-        children: [
-            {
-                value: 'hangzhou',
-                label: 'Hangzhou',
-                children: [
-                    {
-                        value: 'xihu',
-                        label: 'West Lake',
-                    },
-                ],
-            },
-        ],
-    },
-    {
-        value: 'jiangsu',
-        label: 'Jiangsu',
-        children: [
-            {
-                value: 'nanjing',
-                label: 'Nanjing',
-                children: [
-                    {
-                        value: 'zhonghuamen',
-                        label: 'Zhong Hua Men',
-                    },
-                ],
-            },
-        ],
-    },
-];
-
-const formItemLayout = {
-    labelCol: {
-        xs: { span: 24 },
-        sm: { span: 8 },
-    },
-    wrapperCol: {
-        xs: { span: 24 },
-        sm: { span: 16 },
-    },
-};
-const tailFormItemLayout = {
-    wrapperCol: {
-        xs: {
-            span: 24,
-            offset: 0,
-        },
-        sm: {
-            span: 16,
-            offset: 8,
-        },
-    },
-};
-const EnterCollege:FC = () => {
+    // 表单相关方法
+    const { Option } = Select;
     const [form] = Form.useForm();
-
-    const onFinish = (values: any) => {
-        console.log('Received values of form: ', values);
+    const normFile = (e: any) => {
+        console.log('Upload event:', e);
+        if (Array.isArray(e)) {
+            return e;
+        }
+        return e && e.fileList;
     };
 
+    const formItemLayout = {
+        labelCol: {
+            xs: { span: 24 },
+            sm: { span: 8 },
+        },
+        wrapperCol: {
+            xs: { span: 24 },
+            sm: { span: 16 },
+        },
+    };
+    const tailFormItemLayout = {
+        wrapperCol: {
+            xs: {
+                span: 24,
+                offset: 0,
+            },
+            sm: {
+                span: 16,
+                offset: 8,
+            },
+        },
+    };
     const prefixSelector = (
         <Form.Item name="prefix" noStyle>
             <Select style={{ width: 70 }}>
@@ -90,175 +60,222 @@ const EnterCollege:FC = () => {
             </Select>
         </Form.Item>
     );
-
-    const [autoCompleteResult, setAutoCompleteResult] = useState<string[]>([]);
-
     const onWebsiteChange = (value: string) => {
         if (!value) {
             setAutoCompleteResult([]);
         } else {
-            setAutoCompleteResult(['.com', '.org', '.net'].map(domain => `${value}${domain}`));
+            setAutoCompleteResult(['.com', '.org', '.net', '.cn'].map(domain => `${value}${domain}`));
         }
     };
-
     const websiteOptions = autoCompleteResult.map(website => ({
         label: website,
         value: website,
     }));
+    const onFinish = (values: any) => {
+        message.success('提交成功');
+        setIsSubmit(true)
+        console.log('Received values of form: ', values);
+    };
     return (
         <div id="EnterCollege">
-            <div className="college-header">
-                请录入学校信息
+            <div className="enter-college-header">
+                {
+                    isSubmit || <div>请录入学校信息</div>
+                }
             </div>
-            <div className="college-body">
-                <Form
-                    {...formItemLayout}
-                    form={form}
-                    name="register"
-                    onFinish={onFinish}
-                    initialValues={{
-                        residence: ['zhejiang', 'hangzhou', 'xihu'],
-                        prefix: '86',
-                    }}
-                    scrollToFirstError
-                >
-                    <Form.Item
-                        name="email"
-                        label="E-mail"
-                        rules={[
-                            {
-                                type: 'email',
-                                message: 'The input is not valid E-mail!',
-                            },
-                            {
-                                required: true,
-                                message: 'Please input your E-mail!',
-                            },
-                        ]}
-                    >
-                        <Input />
-                    </Form.Item>
-
-                    <Form.Item
-                        name="password"
-                        label="Password"
-                        rules={[
-                            {
-                                required: true,
-                                message: 'Please input your password!',
-                            },
-                        ]}
-                        hasFeedback
-                    >
-                        <Input.Password />
-                    </Form.Item>
-
-                    <Form.Item
-                        name="confirm"
-                        label="Confirm Password"
-                        dependencies={['password']}
-                        hasFeedback
-                        rules={[
-                            {
-                                required: true,
-                                message: 'Please confirm your password!',
-                            },
-                            ({ getFieldValue }) => ({
-                                validator(_, value) {
-                                    if (!value || getFieldValue('password') === value) {
-                                        return Promise.resolve();
-                                    }
-                                    return Promise.reject('The two passwords that you entered do not match!');
-                                },
-                            }),
-                        ]}
-                    >
-                        <Input.Password />
-                    </Form.Item>
-
-                    <Form.Item
-                        name="nickname"
-                        label={
-                            <span>
-                                Nickname&nbsp;
-            <Tooltip title="What do you want others to call you?">
-                                    <QuestionCircleOutlined />
-                                </Tooltip>
-                            </span>
-                        }
-                        rules={[{ required: true, message: 'Please input your nickname!', whitespace: true }]}
-                    >
-                        <Input />
-                    </Form.Item>
-
-                    <Form.Item
-                        name="residence"
-                        label="Habitual Residence"
-                        rules={[
-                            { type: 'array', required: true, message: 'Please select your habitual residence!' },
-                        ]}
-                    >
-                        <Cascader options={residences} />
-                    </Form.Item>
-
-                    <Form.Item
-                        name="phone"
-                        label="Phone Number"
-                        rules={[{ required: true, message: 'Please input your phone number!' }]}
-                    >
-                        <Input addonBefore={prefixSelector} style={{ width: '100%' }} />
-                    </Form.Item>
-
-                    <Form.Item
-                        name="website"
-                        label="Website"
-                        rules={[{ required: true, message: 'Please input website!' }]}
-                    >
-                        <AutoComplete options={websiteOptions} onChange={onWebsiteChange} placeholder="website">
-                            <Input />
-                        </AutoComplete>
-                    </Form.Item>
-
-                    <Form.Item label="Captcha" extra="We must make sure that your are a human.">
-                        <Row gutter={8}>
-                            <Col span={12}>
+            <div className="enter-college-body">
+                {
+                    isSubmit ?
+                        <div className="upload-success-body">
+                            <CheckCircleTwoTone twoToneColor="#52c41a" style={{ fontSize: "36px" }} />&nbsp;&nbsp;&nbsp;
+                        我们将会在三个工作日内处理您的申请，请留意短信及邮箱通知
+                        </div>
+                        : (
+                            <Form
+                                {...formItemLayout}
+                                form={form}
+                                name="register"
+                                onFinish={onFinish}
+                                initialValues={{
+                                    residence: ['zhejiang', 'hangzhou', 'xihu'],
+                                    prefix: '86',
+                                }}
+                                scrollToFirstError
+                                size="middle"
+                            >
                                 <Form.Item
-                                    name="captcha"
-                                    noStyle
-                                    rules={[{ required: true, message: 'Please input the captcha you got!' }]}
+                                    name="schhol-name"
+                                    label="学校名称"
+                                    rules={[
+                                        {
+                                            required: true,
+                                            message: '请输入学校名称',
+                                        },
+                                    ]}
                                 >
                                     <Input />
                                 </Form.Item>
-                            </Col>
-                            <Col span={12}>
-                                <Button>Get captcha</Button>
-                            </Col>
-                        </Row>
-                    </Form.Item>
 
-                    <Form.Item
-                        name="agreement"
-                        valuePropName="checked"
-                        rules={[
-                            {
-                                validator: (_, value) =>
-                                    value ? Promise.resolve() : Promise.reject('Should accept agreement'),
-                            },
-                        ]}
-                        {...tailFormItemLayout}
-                    >
-                        <Checkbox>
-                            I have read the <a href="">agreement</a>
-                        </Checkbox>
-                    </Form.Item>
-                    <Form.Item {...tailFormItemLayout}>
-                        <Button type="primary" htmlType="submit">
-                            Register
-                        </Button>
-                    </Form.Item>
-                </Form>
+                                <Form.Item
+                                    name="school-email"
+                                    label="学校邮箱"
+                                    rules={[
+                                        {
+                                            type: 'email',
+                                            message: '您的邮箱格式不合法',
+                                        },
+                                        {
+                                            required: true,
+                                            message: '请输入学校邮箱',
+                                        },
+                                    ]}
+                                >
+                                    <Input />
+                                </Form.Item>
+                                <Form.Item
+                                    name="schhol-address"
+                                    label="学校地址"
+                                    rules={[
+                                        {
+                                            required: true,
+                                            message: '请输入学校地址',
+                                        },
+                                    ]}
+                                >
+                                    <Input />
+                                </Form.Item>
+
+                                <Form.Item
+                                    name="school-icp"
+                                    label="备案号"
+                                    rules={[{ required: true, message: 'Please input your nickname!' }]}
+                                >
+                                    <Input />
+                                </Form.Item>
+                                <Form.Item
+                                    name="school-director"
+                                    label="负责人"
+                                    rules={[{ required: true, message: '请填写本校的负责人' }]}
+                                >
+                                    <Input />
+                                </Form.Item>
+                                <Form.Item
+                                    name="school-phone"
+                                    label="联系方式"
+                                    rules={[{ required: true, message: '请输入学校联系方式' }]}
+                                >
+                                    <Input addonBefore={prefixSelector} style={{ width: '100%' }} />
+                                </Form.Item>
+                                <Form.Item
+                                    name="school-eleccode"
+                                    label={
+                                        <span>
+                                            电子标识编号&nbsp;
+                                <Tooltip title="此项为事业单位电子标识编号">
+                                                <QuestionCircleOutlined />
+                                            </Tooltip>
+                                        </span>
+                                    }
+                                    rules={[
+                                        {
+                                            required: true,
+                                            message: '请输入电子标识编号',
+                                        },
+                                    ]}
+                                >
+                                    <Input />
+                                </Form.Item>
+                                <Form.Item
+                                    name="school-postcode"
+                                    label="邮政编码"
+                                >
+                                    <Input />
+                                </Form.Item>
+                                <Form.Item
+                                    name="school-website"
+                                    label="学校官网"
+                                >
+                                    <AutoComplete options={websiteOptions} onChange={onWebsiteChange}>
+                                        <Input />
+                                    </AutoComplete>
+                                </Form.Item>
+                                <Form.Item
+                                    name="school-password"
+                                    label="登录密码"
+                                    rules={[
+                                        {
+                                            required: true,
+                                            message: '请输入您的登录密码',
+                                        },
+                                    ]}
+                                    hasFeedback
+                                >
+                                    <Input.Password />
+                                </Form.Item>
+
+                                <Form.Item
+                                    name="confirm-password"
+                                    label="确认密码"
+                                    dependencies={['school-password']}
+                                    hasFeedback
+                                    rules={[
+                                        {
+                                            required: true,
+                                            message: '请确认您的密码',
+                                        },
+                                        ({ getFieldValue }) => ({
+                                            validator(_, value) {
+                                                if (!value || getFieldValue('school-password') === value) {
+                                                    return Promise.resolve();
+                                                }
+                                                return Promise.reject('您两次输入的密码不一致!');
+                                            },
+                                        }),
+                                    ]}
+                                >
+                                    <Input.Password />
+                                </Form.Item>
+                                <Form.Item label="学校资质执照">
+                                    <Form.Item
+                                        name="dragger"
+                                        valuePropName="fileList"
+                                        getValueFromEvent={normFile}
+                                        noStyle>
+                                        <Upload.Dragger name="files" action="/upload.do">
+                                            <p className="ant-upload-drag-icon">
+                                                <InboxOutlined />
+                                            </p>
+                                            <p className="ant-upload-text">请点击或拖动文件到这里上传</p>
+                                            <p className="ant-upload-hint">支持单次或批量上传</p>
+                                        </Upload.Dragger>
+                                    </Form.Item>
+                                </Form.Item>
+                                <Form.Item
+                                    name="agreement"
+                                    valuePropName="checked"
+                                    rules={[
+                                        {
+                                            validator: (_, value) => value
+                                                ? Promise.resolve() : Promise.reject('请您阅读并同意隐私协议')
+                                        },
+                                    ]}
+                                    {...tailFormItemLayout}
+                                >
+                                    <Checkbox>
+                                        我同意 <a href="/#">校园帮隐私协议</a>
+                                    </Checkbox>
+                                </Form.Item>
+                                <Form.Item {...tailFormItemLayout}>
+                                    <Button type="primary" htmlType="submit">
+                                        提交
+                                    </Button>
+                                </Form.Item>
+                            </Form>
+                        )
+                }
+
             </div>
-            <div className="college-footer">
+            <div className="enter-college-footer">
 
             </div>
         </div>

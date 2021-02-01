@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { FC }  from 'react'
 
-const EnterStudent = () => {
+const EnterStudent:FC = () => {
     return (
         <div id="EnterStudent">
             <div className="student-header">
-454654654
+
             </div>
             <div className="student-body">
 

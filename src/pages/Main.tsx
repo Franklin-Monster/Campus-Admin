@@ -4,7 +4,7 @@ import RouteIndex from '../logic/route/index'
 import './main.scss'
 
 // antd
-import { Layout, Menu, Breadcrumb } from 'antd';
+import { Layout, Menu } from 'antd';
 import {
     DesktopOutlined,
     PieChartOutlined,
@@ -16,11 +16,13 @@ const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
 
 // props
-interface InitProps { }
-type MainProps = InitProps & RouteComponentProps;
+interface InitProps {
+    name: string
+ }
+type MainProps = InitProps & RouteComponentProps
 
 const Main: FC<MainProps> = (props: MainProps) => {
-    const [collapsed, setCollapsed] = useState(false)
+    const [collapsed, setCollapsed] = useState<boolean>(false)
     const onCollapse = (collapsed: boolean): void => {
         setCollapsed(collapsed)
     };
@@ -39,11 +41,12 @@ const Main: FC<MainProps> = (props: MainProps) => {
                          </Menu.Item>
                         <SubMenu key="sub1" icon={<UserOutlined />} title="录入系统">
                             <Menu.Item key="3" onClick={() => props.history.push('/entercollege')}>学校</Menu.Item>
-                            <Menu.Item key="4" onClick={() => props.history.push('/enterteacher')}>教师</Menu.Item>
-                            <Menu.Item key="5" onClick={() => props.history.push('/enterstudent')}>学生</Menu.Item>
+                            <Menu.Item key="4" onClick={() => props.history.push('/enterstudent')}>学院</Menu.Item>
+                            <Menu.Item key="5" onClick={() => props.history.push('/enterteacher')}>教师</Menu.Item>
+                            <Menu.Item key="6" onClick={() => props.history.push('/enterstudent')}>学生</Menu.Item>     
                         </SubMenu>
                         <SubMenu key="sub2" icon={<TeamOutlined />} title="组织架构">
-                            <Menu.Item key="6">Team 1</Menu.Item>
+                            <Menu.Item key="7">Team 1</Menu.Item>
                             <Menu.Item key="8">Team 2</Menu.Item>
                         </SubMenu>
                         <Menu.Item key="9" icon={<FileOutlined />}>

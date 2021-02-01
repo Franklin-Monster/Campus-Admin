@@ -3,7 +3,7 @@ import { lazy } from 'react'
 const EnterCollege = lazy(() => import('@/pages/enter-info/EnterCollege'))
 const EnterTeacher = lazy(() => import('@/pages/enter-info/EnterTeacher'))
 const EnterStudent = lazy(() => import('@/pages/enter-info/EnterStudent'))
-
+const College = lazy(() => import('@/pages/enter-info/College'))
 
 interface RouteType {
     path: string,
@@ -28,6 +28,11 @@ const routes: RouteType[] = [
         component: EnterStudent,
         root: [],
     },
+    {
+        path: '/college',
+        component: College,
+        root: []
+    }
     
 ]
 
