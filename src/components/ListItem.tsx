@@ -5,7 +5,6 @@ interface ListProps {
     title: string,
     content: string,
     width?: string,
-    
 }
 
 const ListItem: FC<ListProps> = (props: ListProps) => {

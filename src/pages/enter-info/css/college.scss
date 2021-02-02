@@ -57,25 +57,17 @@
         margin: 30px 50px;
     }
 
-    .ins-card {
-        padding: 30px 50px;
-        background-color: #FAFAFA;
-        border-radius: 5%;
-        font-size: 16px;
-    }
-
-    .card-title {
-        text-align: center;
-        font-size: 18px;
-    }
-
-    .card-content {
-        padding: 10px 0;
-    }
-
-    .card-item {
+    .ins-title {
         display: flex;
         justify-content: space-between;
-        padding: 5px 0;
+        align-items: center;
     }
+
+    .ins-add {
+        color: #1890FF;
+        font-weight: 400;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
 }
