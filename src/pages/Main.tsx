@@ -18,7 +18,7 @@ const { SubMenu } = Menu;
 // props
 interface InitProps {
     name: string
- }
+}
 type MainProps = InitProps & RouteComponentProps
 
 const Main: FC<MainProps> = (props: MainProps) => {
@@ -40,10 +40,18 @@ const Main: FC<MainProps> = (props: MainProps) => {
                             Option 2
                          </Menu.Item>
                         <SubMenu key="sub1" icon={<UserOutlined />} title="录入系统">
-                            <Menu.Item key="3" onClick={() => props.history.push('/entercollege')}>学校</Menu.Item>
-                            <Menu.Item key="4" onClick={() => props.history.push('/enterstudent')}>学院</Menu.Item>
-                            <Menu.Item key="5" onClick={() => props.history.push('/enterteacher')}>教师</Menu.Item>
-                            <Menu.Item key="6" onClick={() => props.history.push('/enterstudent')}>学生</Menu.Item>     
+                            <Menu.Item key="3" onClick={() => props.history.push('/entercollege')}>
+                                学校
+                            </Menu.Item>
+                            <Menu.Item key="4" onClick={() => props.history.push('/institute')}>
+                                学院
+                            </Menu.Item>
+                            <Menu.Item key="5" onClick={() => props.history.push('/specialty')}>
+                                专业
+                            </Menu.Item>
+                            <Menu.Item key="6" onClick={() => props.history.push('/enterstaff')}>
+                                人员
+                            </Menu.Item>
                         </SubMenu>
                         <SubMenu key="sub2" icon={<TeamOutlined />} title="组织架构">
                             <Menu.Item key="7">Team 1</Menu.Item>

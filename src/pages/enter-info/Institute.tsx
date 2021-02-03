@@ -1,5 +1,5 @@
 import React, { FC, useState } from 'react'
-import './css/college'
+import './css/institute'
 
 // component
 import ListItem from '@c/ListItem'
@@ -9,63 +9,55 @@ import CollectionCreateForm from '@c/CollectionCreateForm'
 // antd
 import { PlusCircleTwoTone } from '@ant-design/icons'
 
-const College: FC = () => {
+const Institute: FC = () => {
     const [addBoxVisible, setAddBoxVisible] = useState<boolean>(false);
-    const [institute, setInstitute] = useState<Array<
+    const [specialty, setSpecialty] = useState<Array<
         {
             title: string,
             itemText: Array<Array<string>>
         }>>([{
-            title: "经济与管理学院",
+            title: "信息管理与信息系统",
             itemText: [
-                ['负责人', '王老师'],
+                ['负责人', '刘老师'],
                 ['联系方式', '13888888888'],
             ]
         }])
 
-    const addInstitute = (item: { title: string, director: string, phone: string }) => {
+    const addSpecialty = (item: { title: string, director: string, phone: string }) => {
         const newIns = {
             title: item.title,
             itemText: [["负责人", item.director], ["联系方式", item.phone]]
         }
-        setInstitute(ins => [...ins, newIns])
+        setSpecialty(spe => [...spe, newIns])
         setAddBoxVisible(false);
     };
 
     return (
-        <div id="College">
-            <div className="college-header">
-                <div className="header-text">
-                    <div className="text-name">天津城建大学</div>
-                    <div className="text-englishname">Tianjin Chengjian University</div>
-                </div>
-                <div className="header-img">
-                    <img src={require('./img/school-icon.jpg').default} alt="icon" />
-                </div>
+        <div id="Institute">
+            <div className="institute-header">
+                经济与管理学院
             </div>
-            <div className="college-body">
+            <div className="institute-body">
                 <div className="body-list">
-                    <div className="list-title">学校信息</div>
+                    <div className="list-title">学院信息</div>
                     <div className="list-content">
                         <ListItem title="负责人：" content="李书记" />
                         <ListItem title="联系方式：" content="13888888888" />
-                        <ListItem title="地址：" content="天津市西青区津静公路26号" />
-                        <ListItem title="官网：" content="http://www.tcu.edu.cn" />
                     </div>
                 </div>
-                <div className="body-institute">
-                    <div className="ins-title">
-                        <div>各级学院</div>
-                        <div className="ins-add" onClick={() => {
+                <div className="body-specialty">
+                    <div className="spe-title">
+                        <div>院系专业</div>
+                        <div className="spe-add" onClick={() => {
                             setAddBoxVisible(true);
                         }}>
                             添加&nbsp;
                             <PlusCircleTwoTone />
                         </div>
                     </div>
-                    <div className="ins-list">
+                    <div className="spe-list">
                         {
-                            institute.map((item, index) => {
+                            specialty.map((item, index) => {
                                 return (
                                     <CardItem
                                         title={item.title}
@@ -77,7 +69,7 @@ const College: FC = () => {
                         }
                         <CollectionCreateForm
                             visible={addBoxVisible}
-                            onCreate={addInstitute}
+                            onCreate={addSpecialty}
                             onCancel={() => {
                                 setAddBoxVisible(false)
                             }}
@@ -85,9 +77,9 @@ const College: FC = () => {
                     </div>
                 </div>
             </div>
-            <div className="college-footer"></div>
+            <div className="institute-footer"></div>
         </div>
     )
 }
 
-export default College
+export default Institute

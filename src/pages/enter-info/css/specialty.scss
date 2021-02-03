@@ -1,37 +1,13 @@
-#College {
-    .college-header {
-        width: 60%;
-        height: 200px;
-        padding: 30px 50px;
-        display: flex;
-        justify-content: space-between;
-        margin: 0 auto;
-    }
-
-    .header-text {
-        margin: 10px 20px;
-    }
-
-    .text-name {
+#Specialty {
+    .specialty-header {
         font-size: 30px;
         font-weight: 600;
-        margin: 10px 0;
+        margin: 10px 50px;
     }
 
-    .text-englishname {
-        font-size: 18px;
-    }
-
-    .header-img {
-        img {
-            width: 180px;
-            height: 180px;
-        }
-    }
-
-    .college-body {
+    .specialty-body {
         width: 60%;
-        margin: 60px auto;
+        margin: 0 auto;
         padding: 20px;
     }
 
@@ -44,21 +20,21 @@
         border-radius: 5%;
         background-color: #FAFAFA;
     }
-
-    .ins-title,
-    .list-title {
+    
+    .list-title,
+    .class-title{
         font-size: 20px;
         font-weight: 600;
         margin: 30px 50px;
     }
 
-    .ins-title {
+    .class-title {
         display: flex;
         justify-content: space-between;
         align-items: center;
     }
 
-    .ins-add {
+    .class-add {
         color: #1890FF;
         font-weight: 400;
         font-size: 16px;

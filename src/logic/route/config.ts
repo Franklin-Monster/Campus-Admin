@@ -1,9 +1,10 @@
 import { lazy } from 'react'
 
-const EnterCollege = lazy(() => import('@/pages/enter-info/EnterCollege'))
-const EnterTeacher = lazy(() => import('@/pages/enter-info/EnterTeacher'))
-const EnterStudent = lazy(() => import('@/pages/enter-info/EnterStudent'))
-const College = lazy(() => import('@/pages/enter-info/College'))
+const EnterCollege = lazy(() => import('@p/enter-info/EnterCollege'))
+const EnterStaff = lazy(() => import('@p/enter-info/EnterStaff'))
+const College = lazy(() => import('@p/enter-info/College'))
+const Institute = lazy(() => import('@p/enter-info/Institute'))
+const Specialty = lazy(() => import('@p/enter-info/Specialty'))
 
 interface RouteType {
     path: string,
@@ -14,26 +15,31 @@ interface RouteType {
 
 const routes: RouteType[] = [
     {
+        path: '/college',
+        component: College,
+        root: []
+    },
+    {
+        path: '/institute',
+        component: Institute,
+        root: []
+    },
+    {
+        path: '/specialty',
+        component: Specialty,
+        root: []
+    },
+    {
         path: '/entercollege',
         component: EnterCollege,
         root: [],
     },
     {
-        path: '/enterteacher',
-        component: EnterTeacher,
+        path: '/enterstaff',
+        component: EnterStaff,
         root: [],
     },
-    {
-        path: '/enterstudent',
-        component: EnterStudent,
-        root: [],
-    },
-    {
-        path: '/college',
-        component: College,
-        root: []
-    }
-    
+
 ]
 
 export default routes
