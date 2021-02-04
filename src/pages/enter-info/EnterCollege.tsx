@@ -1,4 +1,5 @@
 import React, { FC, useState } from 'react'
+import { formItemLayout, tailFormItemLayout } from './help'
 import './css/enter-college'
 
 // antd
@@ -22,7 +23,7 @@ const EnterCollege: FC = () => {
     // 表单相关方法
     const { Option } = Select;
     const [form] = Form.useForm();
-    const normFile = (e: any) => {
+    const uploadFile = (e: any) => {
         console.log('Upload event:', e);
         if (Array.isArray(e)) {
             return e;
@@ -30,28 +31,6 @@ const EnterCollege: FC = () => {
         return e && e.fileList;
     };
 
-    const formItemLayout = {
-        labelCol: {
-            xs: { span: 24 },
-            sm: { span: 8 },
-        },
-        wrapperCol: {
-            xs: { span: 24 },
-            sm: { span: 16 },
-        },
-    };
-    const tailFormItemLayout = {
-        wrapperCol: {
-            xs: {
-                span: 24,
-                offset: 0,
-            },
-            sm: {
-                span: 16,
-                offset: 8,
-            },
-        },
-    };
     const prefixSelector = (
         <Form.Item name="prefix" noStyle>
             <Select style={{ width: 70 }}>
@@ -97,14 +76,13 @@ const EnterCollege: FC = () => {
                                 name="register"
                                 onFinish={onFinish}
                                 initialValues={{
-                                    residence: ['zhejiang', 'hangzhou', 'xihu'],
                                     prefix: '86',
                                 }}
                                 scrollToFirstError
                                 size="middle"
                             >
                                 <Form.Item
-                                    name="schhol-name"
+                                    name="school-name"
                                     label="学校名称"
                                     rules={[
                                         {
@@ -133,7 +111,7 @@ const EnterCollege: FC = () => {
                                     <Input />
                                 </Form.Item>
                                 <Form.Item
-                                    name="schhol-address"
+                                    name="school-address"
                                     label="学校地址"
                                     rules={[
                                         {
@@ -239,7 +217,7 @@ const EnterCollege: FC = () => {
                                     <Form.Item
                                         name="dragger"
                                         valuePropName="fileList"
-                                        getValueFromEvent={normFile}
+                                        getValueFromEvent={uploadFile}
                                         noStyle>
                                         <Upload.Dragger name="files" action="/upload.do">
                                             <p className="ant-upload-drag-icon">
@@ -268,6 +246,14 @@ const EnterCollege: FC = () => {
                                 <Form.Item {...tailFormItemLayout}>
                                     <Button type="primary" htmlType="submit">
                                         提交
+                                    </Button>
+                                    <Button
+                                        style={{ margin: '0 8px' }}
+                                        onClick={() => {
+                                            form.resetFields();
+                                        }}
+                                    >
+                                        重置
                                     </Button>
                                 </Form.Item>
                             </Form>

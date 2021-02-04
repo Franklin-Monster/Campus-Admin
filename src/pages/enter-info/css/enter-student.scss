@@ -1,0 +1,23 @@
+#EnterStudent {
+    width: 100%;
+
+    .enter-student-header {
+        font-weight: 600;
+        font-size: 20px;
+        height: 100px;
+    }
+
+    .upload-success-body {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 24px;
+        font-weight: 600;
+    }
+}
+
+// 覆盖antd样式
+.ant-form-item-control-input {
+    width: 60%;
+}
