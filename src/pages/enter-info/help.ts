@@ -1,4 +1,4 @@
-export const formItemLayout = {
+const formItemLayout = {
     labelCol: {
         xs: { span: 24 },
         sm: { span: 8 },
@@ -7,8 +7,8 @@ export const formItemLayout = {
         xs: { span: 24 },
         sm: { span: 16 },
     },
-};
-export const tailFormItemLayout = {
+}
+const tailFormItemLayout = {
     wrapperCol: {
         xs: {
             span: 24,
@@ -19,8 +19,57 @@ export const tailFormItemLayout = {
             offset: 8,
         },
     },
-};
-export const getGradeOption = () => {
+}
+const getStaffOption = () => {
+    return {
+        title: {
+            text: '人数分布',
+            left: 'center',
+            textStyle: {
+                fontSize: 28
+            }
+        },
+        tooltip: {
+            trigger: 'item'
+        },
+        legend: {
+            orient: 'vertical',
+            left: 'left',
+            textStyle: {
+                fontSize: 18
+            },
+        },
+        series: [
+            {
+                name: '人数分布',
+                type: 'pie',
+                radius: '50%',
+                data: [
+                    { value: 300, name: '学生' },
+                    { value: 20, name: '教师' },
+                ],
+                textStyle: {
+                    color: '#0b2b5e',
+                    fontSize: 18
+                },
+
+                emphasis: {
+                    itemStyle: {
+                        shadowBlur: 10,
+                        shadowOffsetX: 0,
+                        shadowColor: 'rgba(0, 0, 0, 0.5)',
+                        textStyle: {
+                            color: '#0b2b5e',
+                            fontSize: 18
+                        },
+
+                    }
+                }
+            }
+        ]
+    }
+}
+const getGradeOption = () => {
     return {
         title: {
             text: '年级分布',
@@ -80,7 +129,7 @@ export const getGradeOption = () => {
         ]
     }
 }
-export const getClassOption = () => {
+const getClassOption = () => {
     return {
         title: {
             text: '2017班级人数分布',
@@ -138,7 +187,7 @@ export const getClassOption = () => {
         ]
     }
 }
-export const student1TableData = [
+const student1TableData = [
     {
         key: '1',
         firstName: 'John',
@@ -164,7 +213,7 @@ export const student1TableData = [
         tags: ['cool', 'teacher'],
     },
 ];
-export const student2TableData = [
+const student2TableData = [
     {
         key: '1',
         firstName: 'John',
@@ -214,3 +263,17 @@ export const student2TableData = [
         tags: ['cool', 'teacher'],
     },
 ]
+
+export {
+    formItemLayout,
+    tailFormItemLayout,
+    getStaffOption,
+    getGradeOption,
+    getClassOption,
+    student1TableData,
+    student2TableData
+}
+
+
+
+

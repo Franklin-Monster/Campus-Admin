@@ -2,6 +2,7 @@ import React, { FC } from 'react'
 import './css/enter-staff'
 import { RouteComponentProps } from 'react-router-dom'
 import ReactEcharts from 'echarts-for-react'
+import { getStaffOption } from './help'
 // import * as echarts from 'echarts';
 
 // // props
@@ -26,55 +27,7 @@ const EnterStaff: FC<RouteComponentProps> = (props: RouteComponentProps) => {
         'click': onChartClick,
         'legendselectchanged': onChartLegendselectchanged
     }
-    const getOption = () => {
-        return {
-            title: {
-                text: '人数分布',
-                left: 'center',
-                textStyle: {
-                    fontSize: 28
-                }
-            },
-            tooltip: {
-                trigger: 'item'
-            },
-            legend: {
-                orient: 'vertical',
-                left: 'left',
-                textStyle: {
-                    fontSize: 18
-                },
-            },
-            series: [
-                {
-                    name: '人数分布',
-                    type: 'pie',
-                    radius: '50%',
-                    data: [
-                        { value: 300, name: '学生' },
-                        { value: 20, name: '教师' },
-                    ],
-                    textStyle: {
-                        color: '#0b2b5e',
-                        fontSize: 18
-                    },
 
-                    emphasis: {
-                        itemStyle: {
-                            shadowBlur: 10,
-                            shadowOffsetX: 0,
-                            shadowColor: 'rgba(0, 0, 0, 0.5)',
-                            textStyle: {
-                                color: '#0b2b5e',
-                                fontSize: 18
-                            },
-
-                        }
-                    }
-                }
-            ]
-        }
-    }
     return (
         <div id="EnterStaff">
             <div className="staff-header">
@@ -84,7 +37,7 @@ const EnterStaff: FC<RouteComponentProps> = (props: RouteComponentProps) => {
                 <ReactEcharts
                     style={{ width: '100%', height: '600px' }}
                     notMerge={true}
-                    option={getOption()}
+                    option={getStaffOption()}
                     onEvents={onEchartsEvents}
                 />
             </div>

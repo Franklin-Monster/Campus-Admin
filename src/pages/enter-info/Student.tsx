@@ -1,14 +1,15 @@
 import React, { FC, useState } from 'react'
-import { RouteComponentProps } from 'react-router-dom';
+import { RouteComponentProps } from 'react-router-dom'
 import './css/student'
 import { student1TableData, student2TableData, getGradeOption, getClassOption } from './help'
 import ReactEcharts from 'echarts-for-react'
 import { LeftOutlined } from '@ant-design/icons'
-import { Table, Space, Button } from 'antd';
-const { Column } = Table;
+import { Table, Space, Button } from 'antd'
+
 const Student: FC<RouteComponentProps> = (props: RouteComponentProps) => {
     const [gradeVisible, setGradeVisible] = useState<boolean>(true)
     const [studentTableData, setStudentTableData] = useState<any>(student1TableData)
+    const { Column } = Table
     const returnBack = () => {
         if (!gradeVisible) {
             setGradeVisible(true)
@@ -39,7 +40,6 @@ const Student: FC<RouteComponentProps> = (props: RouteComponentProps) => {
         'click': onClassChartClick,
         // 'legendselectchanged': onChartLegendselectchanged
     }
-
     return (
         <div id="Student">
             <div className="student-header">
@@ -73,7 +73,6 @@ const Student: FC<RouteComponentProps> = (props: RouteComponentProps) => {
                                     <span>学生列表</span>
                                     <Button type="primary" onClick={enterStudent}>添加学生</Button>
                                 </div>
-
                                 <Table dataSource={studentTableData}>
                                     <Column title="学号" dataIndex="address" key="address" />
                                     <Column title="姓名" dataIndex="firstName" key="firstName" />
@@ -93,11 +92,7 @@ const Student: FC<RouteComponentProps> = (props: RouteComponentProps) => {
                             </div>
                         )
                     }
-
-
                 </div>
-
-
             </div>
             <div className="student-footer"></div>
         </div>

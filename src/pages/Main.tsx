@@ -33,7 +33,7 @@ const Main: FC<MainProps> = (props: MainProps) => {
                 <Sider collapsible collapsed={collapsed} onCollapse={onCollapse}>
                     <div className="logo"> </div>
                     <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
-                        <Menu.Item key="1" icon={<PieChartOutlined />}>
+                        <Menu.Item key="1" onClick={() => props.history.push('/statistics')} icon={<PieChartOutlined />} >
                             统计信息
                          </Menu.Item>
                         <Menu.Item key="2" icon={<DesktopOutlined />}>

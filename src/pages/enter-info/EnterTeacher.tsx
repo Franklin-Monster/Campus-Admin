@@ -1,42 +1,32 @@
 import React, { FC } from 'react'
 import { RouteComponentProps } from 'react-router-dom'
-import './css/enter-student'
+import './css/enter-teacher'
 import { formItemLayout, tailFormItemLayout } from './help'
+import { QuestionCircleOutlined } from '@ant-design/icons'
 
 // antd
 import {
     Form,
     Input,
-    Radio,
-    Select,
     Button,
     message,
-    DatePicker
+    Tooltip
 } from 'antd'
 
-const EnterStudent: FC<RouteComponentProps> = (props: RouteComponentProps) => {
+const EnterTeacher: FC<RouteComponentProps> = (props: RouteComponentProps) => {
     // 表单相关方法
-    const { Option } = Select;
     const [form] = Form.useForm()
-    const prefixSelector = (
-        <Form.Item name="prefix" noStyle>
-            <Select style={{ width: 70 }}>
-                <Option value="86">+86</Option>
-                <Option value="87">+87</Option>
-            </Select>
-        </Form.Item>
-    )
     const onStudentTableFinish = (values: any) => {
         message.success('添加成功');
         console.log('Received values of form: ', values);
-        props.history.push('/student')
+        props.history.push('/teacher')
     };
     return (
-        <div id="EnterStudent">
-            <div className="enter-student-header">
-                <div>请录入学生信息</div>
+        <div id="EnterTeacher">
+            <div className="enter-teacher-header">
+                <div>请录入教师信息</div>
             </div>
-            <div className="enter-student-body">
+            <div className="enter-teacher-body">
                 <Form
                     {...formItemLayout}
                     form={form}
@@ -49,72 +39,65 @@ const EnterStudent: FC<RouteComponentProps> = (props: RouteComponentProps) => {
                     }}
                 >
                     <Form.Item
-                        name="stu-number"
-                        label="学号"
+                        name="tea-number"
+                        label="工号"
                         rules={[
                             {
                                 required: true,
-                                message: '请输入学生学号',
+                                message: '请输入教师工号',
                             },
                         ]}
                     >
                         <Input />
                     </Form.Item>
                     <Form.Item
-                        name="stu-name"
+                        name="tea-name"
                         label="姓名"
                         rules={[
                             {
                                 required: true,
-                                message: '请输入学生姓名',
+                                message: '请输入教师姓名',
                             },
                         ]}
                     >
                         <Input />
                     </Form.Item>
                     <Form.Item
-                        name="stu-gender"
-                        label="性别"
+                        name="tea-phone"
+                        label="电话"
                         rules={[
                             {
                                 required: true,
-                                message: '请输入学生性别',
+                                message: '请输入教师电话',
                             },
                         ]}
                     >
-                        <Radio.Group>
-                            <Radio value={0}>男</Radio>
-                            <Radio value={1}>女</Radio>
-                        </Radio.Group>
+                        <Input type="number" />
                     </Form.Item>
                     <Form.Item
-                        name="stu-birth"
-                        label="出生年月"
-                        rules={[
-                            {
-                                required: true,
-                                message: '请选择出生年月',
-                            },
-                        ]}
+                        name="tea-class"
+                        label={
+                            <span>
+                                课程&nbsp;
+                    <Tooltip title="请输入教师所授课程，课程之间用逗号分隔">
+                                    <QuestionCircleOutlined />
+                                </Tooltip>
+                            </span>
+                        }
+                        rules={[{ required: true, message: '请输入教师所授课程' }]}
                     >
-                        <DatePicker picker="month" placeholder="请选择出生年月" />
+                        <Input />
                     </Form.Item>
                     <Form.Item
-                        name="stu-phone"
-                        label="联系方式"
-                        rules={[{ required: true, message: '请输入学生联系方式' }]}
-                    >
-                        <Input addonBefore={prefixSelector} style={{ width: '100%' }} type="number" />
-                    </Form.Item>
-                    <Form.Item
-                        name="stu-address"
-                        label="住址"
-                        rules={[
-                            {
-                                required: true,
-                                message: '请输入学生住址',
-                            },
-                        ]}
+                        name="tea-director"
+                        label={
+                            <span>
+                                班主任&nbsp;
+                    <Tooltip title="若该教师为班主任，请填写负责其班级">
+                                    <QuestionCircleOutlined />
+                                </Tooltip>
+                            </span>
+                        }
                     >
                         <Input />
                     </Form.Item>
@@ -133,8 +116,8 @@ const EnterStudent: FC<RouteComponentProps> = (props: RouteComponentProps) => {
                     </Form.Item>
                 </Form>
             </div>
-            <div className="enter-student-footer"></div>
+            <div className="enter-teacher-footer"></div>
         </div>
     )
 }
-export default EnterStudent
+export default EnterTeacher
