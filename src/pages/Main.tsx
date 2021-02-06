@@ -1,5 +1,5 @@
 import React, { useState, FC } from 'react'
-import { withRouter, RouteComponentProps } from 'react-router-dom';
+import { withRouter, RouteComponentProps } from 'react-router-dom'
 import RouteIndex from '../logic/route/index'
 import './main.scss'
 
@@ -33,7 +33,10 @@ const Main: FC<MainProps> = (props: MainProps) => {
                 <Sider collapsible collapsed={collapsed} onCollapse={onCollapse}>
                     <div className="logo"> </div>
                     <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
-                        <Menu.Item key="1" onClick={() => props.history.push('/statistics')} icon={<PieChartOutlined />} >
+                        <Menu.Item
+                            key="1"
+                            onClick={() => props.history.push('/statistics')}
+                            icon={<PieChartOutlined />} >
                             统计信息
                          </Menu.Item>
                         <Menu.Item key="2" icon={<DesktopOutlined />}>
@@ -66,11 +69,14 @@ const Main: FC<MainProps> = (props: MainProps) => {
                     <Header className="site-layout-background" style={{ padding: 0 }} />
                     <Content style={{ margin: '0 16px' }}>
                         <br />
-                        <div className="site-layout-background" style={{ padding: 24, minHeight: 360 }}>
+                        <div className="site-layout-background"
+                            style={{ padding: 24, minHeight: 360 }}>
                             <RouteIndex />
                         </div>
                     </Content>
-                    <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
+                    <Footer style={{ textAlign: 'center' }}>
+                        Ant Design ©2018 Created by Ant UED
+                    </Footer>
                 </Layout>
             </Layout>
         </div>

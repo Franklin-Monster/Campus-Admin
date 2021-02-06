@@ -12,20 +12,13 @@ import { getStaffOption } from './help'
 // type StaffProps = InitProps & RouteComponentProps
 
 const EnterStaff: FC<RouteComponentProps> = (props: RouteComponentProps) => {
-    const onChartClick = (e: any) => {
+    const onStaffChartClick = (e: any) => {
         switch (e.dataIndex) {
             case 0: props.history.push('/student')
                 break;
             case 1: props.history.push('/teacher')
                 break;
         }
-    }
-    const onChartLegendselectchanged = () => {
-        console.log(2)
-    }
-    const onEchartsEvents = {
-        'click': onChartClick,
-        'legendselectchanged': onChartLegendselectchanged
     }
 
     return (
@@ -38,7 +31,9 @@ const EnterStaff: FC<RouteComponentProps> = (props: RouteComponentProps) => {
                     style={{ width: '100%', height: '600px' }}
                     notMerge={true}
                     option={getStaffOption()}
-                    onEvents={onEchartsEvents}
+                    onEvents={{
+                        'click': onStaffChartClick
+                    }}
                 />
             </div>
             <div className="staff-footer">

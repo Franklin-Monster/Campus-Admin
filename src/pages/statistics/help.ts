@@ -117,7 +117,7 @@ const getAvgRateOption = () => {
                 type: 'category',
                 boundaryGap: false,
                 axisLabel: {
-                    interval: 0,//横轴信息全部显示
+                    interval: 0,
                 },
                 data: ['建筑', '土木', '能源', '材料', '经管',
                     '环境', '计信', '控制', '地质', '城艺',
@@ -136,7 +136,6 @@ const getAvgRateOption = () => {
             {
                 name: '优秀率',
                 type: 'line',
-
                 smooth: true,
                 lineStyle: {
                     width: 0
@@ -190,9 +189,151 @@ const getAvgRateOption = () => {
         ]
     }
 }
+const getInsAvgMarkOption = () => {
+    return {
+        title: {
+            text: ''
+        },
+        tooltip: {
+            trigger: 'axis'
+        },
+        legend: {
+            data: ['2017级', '2018级', '2019级', '2020级']
+        },
+        grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
+        },
+        toolbox: {
+            feature: {
+                saveAsImage: {}
+            }
+        },
+        xAxis: {
+            type: 'category',
+            boundaryGap: false,
+            axisLabel: {
+                interval: 0,
+            },
+            data: ['工程管理', '工程造价', '信息管理', '房地产',
+                '工商管理', '土地管理', '城市管理', '投资学']
+        },
+        yAxis: {
+            type: 'value',
+            min: 60,
+            max: 100
+        },
+        series: [
+            {
+                name: '2017级',
+                type: 'line',
+                data: [82, 75, 88, 81, 85, 77, 78, 68]
+            },
+            {
+                name: '2018级',
+                type: 'line',
+                data: [82, 78, 82, 77, 75, 70, 70, 72]
+            },
+            {
+                name: '2019级',
+                type: 'line',
+                data: [70, 72, 75, 80, 81, 85, 70, 76]
+            },
+            {
+                name: '2020级',
+                type: 'line',
+                data: [75, 80, 81, 85, 70, 72, 75, 82]
+            }
+        ]
+    }
+}
+const speSelectTermoptions = [
+    {
+        value: '2017-2018-aut',
+        label: '2017-2018学年秋',
+    },
+    {
+        value: '2017-2018-spr',
+        label: '2017-2018学年春',
+    },
+    {
+        value: '2018-2019-aut',
+        label: '2018-2019学年秋',
+    },
+    {
+        value: '2018-2019-spr',
+        label: '2018-2019学年春',
+    },
+    {
+        value: '2019-2020-aut',
+        label: '2019-2020学年秋',
+    },
+    {
+        value: '2019-2020-spr',
+        label: '2019-2020学年春',
+    },
+    {
+        value: '2020-2021-aut',
+        label: '2020-2021学年秋',
+    },
+    {
+        value: '2020-2021-spr',
+        label: '2020-2021学年春',
+    },
+];
 
+
+const speClassData = [
+    {
+        name: '2017-2018-aut',
+        data: ['管理学原理', '思修', '大学英语（1）', '高等数学A（1）',
+            '体育（1）', '形势与政策（1）', '大学计算机基础', '高级程序设计语言C']
+    },
+    {
+        name: '2017-2018-spr',
+        data: ['工程图学C', '概率论', '中国近现代史纲要', '数据结构与数据库（1）',
+            '数据库课设', '大学英语（2）', '高等数学A（2）', '体育（2）']
+    },
+    {
+        name: '2018-2019-aut',
+        data: ['经济学', '应用统计学', '线性代数', '马克思主义基本原理概论', '数据库课设',
+            '面向对象应用程序设计', '管理信息系统A', '数据结构与数据库（2）', 'SPSS综合实训',
+            '大学英语（3）', '体育（3）', '形势与政策（2）']
+    },
+    {
+        name: '2018-2019-spr',
+        data: ['会计学原理', '工程建设管理概论', '信息技术基础', '毛概',
+            '工程经济学A', '工程经济学课程设计', '信息网络技术', '研讨课（2）',
+            '大学英语（4）', '体育（4）']
+    },
+    {
+        name: '2019-2020-aut',
+        data: ['运筹学课设', '信息系统开发课设', '信息资源管理', '数据挖掘课设', '系统工程与运筹学',
+            '信息经济学', '数据仓库与数据挖掘', '企业资源计划', '信息系统开发技术A',
+            '大学英语（4）', '体育（4）']
+    },
+    {
+        name: '2019-2020-spr',
+        data: ['科技论文写作', 'IT项目管理课设', '信息系统分析课设',
+            '文献检索', '信息管理专业英语', 'BIM应用管理',
+            '信息分析与决策', '信息系统分析与设计', 'IT项目管理']
+    },
+    {
+        name: '2020-2021-aut',
+        data: ['网络信息安全', '信息检索实训', '形势与政策（4）']
+    },
+    {
+        name: '2020-2021-spr',
+        data: ['毕业实习', '毕业设计']
+    },
+]
 export {
     getInsStudentCountOption,
     getAvgMarkOption,
-    getAvgRateOption
+    getAvgRateOption,
+    getInsAvgMarkOption,
+    speSelectTermoptions,
+    speClassData
 }

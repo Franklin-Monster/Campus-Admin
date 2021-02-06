@@ -9,7 +9,9 @@ const Student = lazy(() => import('@p/enter-info/Student'))
 const EnterStudent = lazy(() => import('@p/enter-info/EnterStudent'))
 const Teacher = lazy(() => import('@p/enter-info/Teacher'))
 const EnterTeacher = lazy(() => import('@p/enter-info/EnterTeacher'))
-const Statistics = lazy(() => import('@/pages/statistics/Satistics'))
+const Statistics = lazy(() => import('@p/statistics/Satistics'))
+const InstituteAvgMark = lazy(() => import('@p/statistics/InstituteAvgMark'))
+const SpecialtyAvgMark = lazy(() => import('@p/statistics/SpecialtyAvgMark'))
 interface RouteType {
     path: string,
     component: React.LazyExoticComponent<any>,
@@ -67,7 +69,17 @@ const routes: RouteType[] = [
         path: '/statistics',
         component: Statistics,
         root: []
-    }
+    },
+    {
+        path: '/instituteavgmark',
+        component: InstituteAvgMark,
+        root: []
+    },
+    {
+        path: '/specialtyavgmark',
+        component: SpecialtyAvgMark,
+        root: []
+    },
 
 ]
 
