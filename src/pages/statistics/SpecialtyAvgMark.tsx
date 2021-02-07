@@ -1,17 +1,18 @@
 import React, { FC, useRef } from 'react'
 import { RouteComponentProps } from 'react-router-dom'
-import './css/specialty-avg-mark'
-
-import { Cascader } from 'antd'
-import ReactEcharts from 'echarts-for-react'
 import { speSelectTermoptions, speClassData } from './help'
+import './css/specialty-avg-mark'
+import ReactEcharts from 'echarts-for-react'
+import { Cascader } from 'antd'
+import { LeftOutlined } from '@ant-design/icons'
 
 const SpecialtyAvgMark: FC<RouteComponentProps> = (props: RouteComponentProps) => {
     const speEchartsRef = useRef()
-
     const onInsAvgMarkChartClick = () => {
-        props.history.push('/specialtyavgmark')
+        props.history.push('/studentmarkwithonline')
     }
+
+    // 监听下拉框改变
     const onSelectChange = (value: any) => {
         let tempArr: number[] = []
         speClassData.forEach((item) => {
@@ -28,16 +29,25 @@ const SpecialtyAvgMark: FC<RouteComponentProps> = (props: RouteComponentProps) =
         // @ts-ignore
         speEchartsRef.current.getEchartsInstance().setOption(speEchartsRef.current.props.option)
     }
+
+    // 更新随机分数
     const updateRandomData = (arr?: number[]) => {
         if (arr instanceof Array) return arr
         return [82, 75, 80, 81, 85, 77, 78, 76, 82]
     }
-    let getSpeAvgMarkOption = {
+    const getSpeAvgMarkOption = {
         color: ['#1890FF'],
         tooltip: {
             trigger: 'axis',
             axisPointer: {
                 type: 'shadow'
+            },
+            formatter: (param: any) => {
+                return `<div>
+                                课程: ${param[0].axisValue}
+                                <br/>
+                                平均分: ${param[0].data}分
+                        </div>`
             }
         },
         toolbox: {
@@ -83,6 +93,8 @@ const SpecialtyAvgMark: FC<RouteComponentProps> = (props: RouteComponentProps) =
     return (
         <div id="SpecialtyAvgMark">
             <div className="spe-header">
+                <LeftOutlined style={{ color: '#1890FF' }} onClick={() => props.history.goBack()} />
+                &nbsp; &nbsp;
                 信息管理与信息系统专业2017级
                 <Cascader
                     options={speSelectTermoptions}
@@ -90,7 +102,6 @@ const SpecialtyAvgMark: FC<RouteComponentProps> = (props: RouteComponentProps) =
                     displayRender={displayRender}
                     onChange={onSelectChange}
                     defaultValue={["2019-2020-spr"]}
-                    // bordered={false}
                     placeholder=""
                 />
                 课程平均分统计

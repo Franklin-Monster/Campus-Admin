@@ -34,11 +34,9 @@ const Student: FC<RouteComponentProps> = (props: RouteComponentProps) => {
     }
     const onGradeEchartsEvents = {
         'click': onGradeChartClick,
-        // 'legendselectchanged': onChartLegendselectchanged
     }
     const onClassEchartsEvents = {
         'click': onClassChartClick,
-        // 'legendselectchanged': onChartLegendselectchanged
     }
     return (
         <div id="Student">
@@ -74,14 +72,14 @@ const Student: FC<RouteComponentProps> = (props: RouteComponentProps) => {
                                     <Button type="primary" onClick={enterStudent}>添加学生</Button>
                                 </div>
                                 <Table dataSource={studentTableData}>
-                                    <Column title="学号" dataIndex="address" key="address" />
-                                    <Column title="姓名" dataIndex="firstName" key="firstName" />
-                                    <Column title="性别" dataIndex="address" key="address" />
-                                    <Column title="出生年月" dataIndex="age" key="age" />
-                                    <Column title="住址" dataIndex="address" key="address" />
+                                    <Column title="学号" dataIndex="address" key="1" />
+                                    <Column title="姓名" dataIndex="firstName" key="2" />
+                                    <Column title="性别" dataIndex="address" key="3" />
+                                    <Column title="出生年月" dataIndex="age" key="4" />
+                                    <Column title="住址" dataIndex="address" key="5" />
                                     <Column
                                         title="操作"
-                                        key="action"
+                                        key="6"
                                         render={() => (
                                             <Space size="middle">
                                                 <span>编辑</span>

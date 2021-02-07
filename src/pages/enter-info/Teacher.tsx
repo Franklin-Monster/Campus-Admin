@@ -3,7 +3,7 @@ import { RouteComponentProps } from 'react-router-dom'
 import './css/teacher'
 import { Table, Space, Button } from 'antd'
 import { student1TableData } from './help'
-
+import { LeftOutlined } from '@ant-design/icons'
 const Teacher: FC<RouteComponentProps> = (props: RouteComponentProps) => {
     const { Column } = Table
     const enterTeacher = () => {
@@ -12,7 +12,10 @@ const Teacher: FC<RouteComponentProps> = (props: RouteComponentProps) => {
     return (
         <div id="Teacher">
             <div className="teacher-header">
-                <span> 信息管理与信息系统专业教师</span>
+                <span>
+                    <LeftOutlined style={{ color: '#1890FF' }} onClick={() => props.history.goBack()} />
+                    &nbsp;&nbsp;信息管理与信息系统专业教师
+                </span>
                 <Button type="primary" onClick={enterTeacher}>添加教师</Button>
             </div>
             <div className="teacher-body">

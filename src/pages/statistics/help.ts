@@ -9,6 +9,16 @@ const getInsStudentCountOption = () => {
         toolbox: {
             show: false,
         },
+        tooltip: {
+            formatter: (param: any) => {
+                const data = param.data
+                return `<div>
+                                学院: ${data.name}
+                                <br/>
+                                人数: ${data.value}人
+                        </div>`
+            }
+        },
         series: [
             {
                 name: '面积模式',
@@ -46,6 +56,13 @@ const getAvgMarkOption = () => {
             trigger: 'axis',
             axisPointer: {
                 type: 'shadow'
+            },
+            formatter: (param: any) => {
+                return `<div>
+                                学院: ${param[0].axisValue}学院
+                                <br/>
+                                平均分: ${param[0].data}分
+                        </div>`
             }
         },
         toolbox: {
@@ -86,13 +103,26 @@ const getAvgMarkOption = () => {
 const getAvgRateOption = () => {
     return {
         color: ['#80FFA5', '#00DDFF'],
+        // tooltip: {
+        //     trigger: 'axis',
+        //     axisPointer: {
+        //         type: 'cross',
+        //         label: {
+        //             backgroundColor: '#6a7985'
+        //         }
+        //     }
+        // },
         tooltip: {
             trigger: 'axis',
-            axisPointer: {
-                type: 'cross',
-                label: {
-                    backgroundColor: '#6a7985'
-                }
+            formatter: (param: any) => {
+                console.log(param)
+                return `<div>
+                                学院: ${param[0].axisValue}学院
+                                <br/>
+                                优秀率: ${String(param[0].value).split('.')[1]}%
+                                <br/>
+                                挂科率: ${String(param[1].value).split('.')[1]}%
+                        </div>`
             }
         },
         legend: {
@@ -249,6 +279,77 @@ const getInsAvgMarkOption = () => {
         ]
     }
 }
+
+const getStuScatterOption = () => {
+    return {
+        xAxis: {
+            min: 0,
+            max: 90,
+            name: '平均在线时长（90min）',
+        },
+        yAxis: {
+            min: 0,
+            max: 100,
+            name: '课程分数',
+        },
+        tooltip: {
+            formatter: (param: any) => {
+                const data = param.data
+                return `<div>
+                                每节课平均在线时长: ${data[0]}min
+                                <br/>
+                                课程分数: ${data[1]}分
+                        </div>`
+            }
+        },
+        series: [{
+            symbolSize: 20,
+            data: [
+                [65, 87],
+                [45, 67],
+                [66, 56],
+                [43, 83],
+                [76, 83],
+                [54, 76],
+                [43, 61],
+                [65, 53],
+                [24, 56],
+                [54, 79],
+                [44, 72],
+                [86, 87],
+                [52, 75],
+                [23, 65],
+                [15, 45],
+                [43, 76],
+                [46, 92],
+                [63, 69],
+                [77, 94],
+                [13, 85],
+                [78, 81],
+                [58, 54],
+                [64, 67],
+                [56, 66],
+                [66, 56],
+                [66, 83],
+                [76, 61],
+                [78, 76],
+                [43, 61],
+                [79, 76],
+                [8, 56],
+                [54, 79],
+                [64, 72],
+                [66, 87],
+                [5, 34],
+                [27, 65],
+                [55, 88],
+                [43, 86],
+                [66, 92],
+                [68, 79],
+            ],
+            type: 'scatter'
+        }]
+    }
+}
 const speSelectTermoptions = [
     {
         value: '2017-2018-aut',
@@ -282,7 +383,7 @@ const speSelectTermoptions = [
         value: '2020-2021-spr',
         label: '2020-2021学年春',
     },
-];
+]
 
 
 const speClassData = [
@@ -334,6 +435,7 @@ export {
     getAvgMarkOption,
     getAvgRateOption,
     getInsAvgMarkOption,
+    getStuScatterOption,
     speSelectTermoptions,
     speClassData
 }

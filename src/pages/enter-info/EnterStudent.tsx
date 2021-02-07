@@ -13,6 +13,7 @@ import {
     message,
     DatePicker
 } from 'antd'
+import { LeftOutlined } from '@ant-design/icons'
 
 const EnterStudent: FC<RouteComponentProps> = (props: RouteComponentProps) => {
     // 表单相关方法
@@ -34,7 +35,10 @@ const EnterStudent: FC<RouteComponentProps> = (props: RouteComponentProps) => {
     return (
         <div id="EnterStudent">
             <div className="enter-student-header">
-                <div>请录入学生信息</div>
+                <div>
+                    <LeftOutlined style={{ color: '#1890FF' }} onClick={() => props.history.goBack()} />
+                &nbsp; &nbsp;请录入学生信息
+                 </div>
             </div>
             <div className="enter-student-body">
                 <Form
