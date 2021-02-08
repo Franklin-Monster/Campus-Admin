@@ -1,19 +1,19 @@
 import React, { useState, FC } from 'react'
-import { withRouter, RouteComponentProps } from 'react-router-dom'
+import { withRouter, RouteComponentProps, Redirect } from 'react-router-dom'
 import RouteIndex from '../logic/route/index'
 import './main.scss'
 
 // antd
-import { Layout, Menu } from 'antd';
+import { Layout, Menu } from 'antd'
 import {
     DesktopOutlined,
     PieChartOutlined,
     FileOutlined,
     TeamOutlined,
     UserOutlined,
-} from '@ant-design/icons';
-const { Header, Content, Footer, Sider } = Layout;
-const { SubMenu } = Menu;
+} from '@ant-design/icons'
+const { Header, Content, Footer, Sider } = Layout
+const { SubMenu } = Menu
 
 // props
 interface InitProps {
@@ -29,6 +29,7 @@ const Main: FC<MainProps> = (props: MainProps) => {
 
     return (
         <div id="Main">
+            <Redirect push to="/statistics" />
             <Layout style={{ minHeight: '100vh' }}>
                 <Sider collapsible collapsed={collapsed} onCollapse={onCollapse}>
                     <div className="logo"> </div>
