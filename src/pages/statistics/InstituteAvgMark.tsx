@@ -26,9 +26,7 @@ const InstituteAvgMark: FC<RouteComponentProps> = (props: RouteComponentProps) =
                     />
                 </div>
             </div>
-            <div className="ins-footer">
-
-            </div>
+            <div className="ins-footer"></div>
         </div>
     )
 }

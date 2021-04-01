@@ -52,9 +52,7 @@ const Statistics: FC<RouteComponentProps> = (props: RouteComponentProps) => {
                     </div>
                 </div>
             </div>
-            <div className="stat-footer">
-
-            </div>
+            <div className="stat-footer"></div>
         </div>
     )
 }

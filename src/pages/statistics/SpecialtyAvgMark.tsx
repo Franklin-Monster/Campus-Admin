@@ -120,9 +120,7 @@ const SpecialtyAvgMark: FC<RouteComponentProps> = (props: RouteComponentProps) =
                     />
                 </div>
             </div>
-            <div className="spe-footer">
-
-            </div>
+            <div className="spe-footer"></div>
         </div>
     )
 }
