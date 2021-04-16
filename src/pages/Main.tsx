@@ -76,7 +76,7 @@ const Main: FC<MainProps> = (props: MainProps) => {
                         </div>
                     </Content>
                     <Footer style={{ textAlign: 'center' }}>
-                        Ant Design ©2018 Created by Ant UED
+                        微校园
                     </Footer>
                 </Layout>
             </Layout>

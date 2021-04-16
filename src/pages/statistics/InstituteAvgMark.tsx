@@ -4,6 +4,7 @@ import './css/institute-avg-mark'
 import ReactEcharts from 'echarts-for-react'
 import { getInsAvgMarkOption } from './help'
 import { LeftOutlined } from '@ant-design/icons'
+
 const InstituteAvgMark: FC<RouteComponentProps> = (props: RouteComponentProps) => {
     const onInsAvgMarkChartClick = () => {
         props.history.push('/specialtyavgmark')

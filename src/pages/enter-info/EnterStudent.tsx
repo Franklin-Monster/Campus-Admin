@@ -37,7 +37,7 @@ const EnterStudent: FC<RouteComponentProps> = (props: RouteComponentProps) => {
             <div className="enter-student-header">
                 <div>
                     <LeftOutlined style={{ color: '#1890FF' }} onClick={() => props.history.goBack()} />
-                &nbsp; &nbsp;请录入学生信息
+                    &nbsp; &nbsp;请录入学生信息
                  </div>
             </div>
             <div className="enter-student-body">

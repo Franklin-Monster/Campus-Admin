@@ -1,4 +1,5 @@
 import React, { FC, useState } from 'react'
+import { RouteComponentProps } from 'react-router-dom'
 import { formItemLayout, tailFormItemLayout } from './help'
 import './css/enter-college'
 
@@ -16,7 +17,7 @@ import {
 } from 'antd';
 import { QuestionCircleOutlined, InboxOutlined, CheckCircleTwoTone } from '@ant-design/icons';
 
-const EnterCollege: FC = () => {
+const EnterCollege: FC<RouteComponentProps> = (props: RouteComponentProps) => {
     const [autoCompleteResult, setAutoCompleteResult] = useState<string[]>([]);
     const [isSubmit, setIsSubmit] = useState<boolean>(false);
 
@@ -54,6 +55,7 @@ const EnterCollege: FC = () => {
         message.success('提交成功');
         setIsSubmit(true)
         console.log('Received values of form: ', values);
+        setTimeout(() => props.history.push('/college'), 5000)
     };
     return (
         <div id="EnterCollege">
@@ -66,7 +68,8 @@ const EnterCollege: FC = () => {
                 {
                     isSubmit ?
                         <div className="upload-success-body">
-                            <CheckCircleTwoTone twoToneColor="#52c41a" style={{ fontSize: "36px" }} />&nbsp;&nbsp;&nbsp;
+                            <CheckCircleTwoTone twoToneColor="#52c41a" style={{ fontSize: "36px" }} />
+                            &nbsp;&nbsp;&nbsp;
                         我们将会在三个工作日内处理您的申请，请留意短信及邮箱通知
                         </div>
                         : (
@@ -126,7 +129,7 @@ const EnterCollege: FC = () => {
                                 <Form.Item
                                     name="school-icp"
                                     label="备案号"
-                                    rules={[{ required: true, message: 'Please input your nickname!' }]}
+                                    rules={[{ required: true, message: '请输入本校的备案号' }]}
                                 >
                                     <Input />
                                 </Form.Item>
@@ -240,7 +243,7 @@ const EnterCollege: FC = () => {
                                     {...tailFormItemLayout}
                                 >
                                     <Checkbox>
-                                        我同意 <a href="/#">校园帮隐私协议</a>
+                                        我同意 <a href="/#">微校园隐私协议</a>
                                     </Checkbox>
                                 </Form.Item>
                                 <Form.Item {...tailFormItemLayout}>
@@ -259,11 +262,8 @@ const EnterCollege: FC = () => {
                             </Form>
                         )
                 }
-
             </div>
-            <div className="enter-college-footer">
-
-            </div>
+            <div className="enter-college-footer"> </div>
         </div>
     )
 }

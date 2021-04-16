@@ -3,13 +3,6 @@ import './css/enter-staff'
 import { RouteComponentProps } from 'react-router-dom'
 import ReactEcharts from 'echarts-for-react'
 import { getStaffOption } from './help'
-// import * as echarts from 'echarts';
-
-// // props
-// interface InitProps {
-//     name: string
-// }
-// type StaffProps = InitProps & RouteComponentProps
 
 const EnterStaff: FC<RouteComponentProps> = (props: RouteComponentProps) => {
     const onStaffChartClick = (e: any) => {
