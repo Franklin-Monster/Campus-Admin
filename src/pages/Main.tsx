@@ -8,8 +8,7 @@ import { Layout, Menu } from 'antd'
 import {
     DesktopOutlined,
     PieChartOutlined,
-    FileOutlined,
-    TeamOutlined,
+    SettingOutlined,
     UserOutlined,
 } from '@ant-design/icons'
 const { Header, Content, Footer, Sider } = Layout
@@ -57,13 +56,17 @@ const Main: FC<MainProps> = (props: MainProps) => {
                                 人员
                             </Menu.Item>
                         </SubMenu>
-                        <SubMenu key="sub2" icon={<TeamOutlined />} title="组织架构">
-                            <Menu.Item key="7">Team 1</Menu.Item>
-                            <Menu.Item key="8">Team 2</Menu.Item>
+                        <SubMenu key="sub3" icon={<SettingOutlined />} title="权限管理">
+                            <Menu.Item key="7" onClick={() => props.history.push('/studentpermission')}>
+                                学生
+                            </Menu.Item>
+                            <Menu.Item key="8" onClick={() => props.history.push('/teacherpermission')}>
+                                教师
+                            </Menu.Item>
+                            <Menu.Item key="9" onClick={() => props.history.push('/apppermission')}>
+                                应用
+                            </Menu.Item>
                         </SubMenu>
-                        <Menu.Item key="9" icon={<FileOutlined />}>
-                            权限管理
-                       </Menu.Item>
                     </Menu>
                 </Sider>
                 <Layout className="site-layout">

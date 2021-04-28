@@ -1,0 +1,35 @@
+#StudentPermission {
+    width: 80%;
+    text-align: center;
+    margin: 0 auto;
+
+    .stupre-header {
+        width: 100%;
+
+        .header-title {
+            font-size: 24px;
+            margin: 24px;
+        }
+    }
+
+    .stupre-body {
+        width: 80vw;
+        overflow: hidden;
+        margin: 36px 0;
+    }
+
+    .stupre-footer {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+
+        button {
+            margin: 0 30px !important;
+        }
+    }
+}
+
+.ant-row,
+.ant-form-item {
+    width: 100vw !important;
+}

@@ -13,7 +13,9 @@ const Statistics = lazy(() => import('@p/statistics/Satistics'))
 const InstituteAvgMark = lazy(() => import('@p/statistics/InstituteAvgMark'))
 const SpecialtyAvgMark = lazy(() => import('@p/statistics/SpecialtyAvgMark'))
 const StudentMarkWithOnline = lazy(() => import('@p/statistics/StudentMarkWithOnline'))
-
+const StudentPremission = lazy(() => import('@/pages/permission/StudentPermission'))
+const TeacherPremission = lazy(() => import('@/pages/permission/TeacherPermission'))
+const AppPremission = lazy(() => import('@/pages/permission/AppPermission'))
 interface RouteType {
     path: string,
     component: React.LazyExoticComponent<any>,
@@ -86,8 +88,22 @@ const routes: RouteType[] = [
         path: '/studentmarkwithonline',
         component: StudentMarkWithOnline,
         root: []
+    },
+    {
+        path: '/studentpermission',
+        component: StudentPremission,
+        root: []
+    },
+    {
+        path: '/teacherpermission',
+        component: TeacherPremission,
+        root: []
+    },
+    {
+        path: '/apppermission',
+        component: AppPremission,
+        root: []
     }
-
 ]
 
 export default routes
